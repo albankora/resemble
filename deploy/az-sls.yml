@@ -1,0 +1,23 @@
+service: sls-az-func-rest-api
+
+plugins:
+  - serverless-azure-functions
+  - serverless-plugin-typescript
+
+provider:
+  name: azure
+  location: East US
+  runtime: nodejs10.x
+
+package:
+  exclude:
+    - local.settings.json
+    - .vscode/**
+
+functions:
+  issues:
+    handler: handler.index
+    events:
+      - http: true
+        x-azure-settings:
+          authLevel: anonymous

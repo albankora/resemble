@@ -1,0 +1,17 @@
+service: sls-aws-lambda-rest-api
+
+plugins:
+  - serverless-plugin-typescript
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: eu-west-1
+  stage: ${opt:stage, 'dev'}
+
+functions:
+  app:
+    handler: handler.index
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'

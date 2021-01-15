@@ -1,0 +1,12 @@
+{
+  "method": "GET",
+  "route": "/people/?search=:search",
+  "resemblances": {
+    "validate": {
+    },
+    "delayed": {
+    },
+    "response": {
+    }
+  }
+}

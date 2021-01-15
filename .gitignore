@@ -1,0 +1,18 @@
+# Compiled output
+/dist
+
+# Vendors
+/node_modules
+
+# OS
+.DS_Store
+
+# IDEs and editors
+/.idea
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+.env

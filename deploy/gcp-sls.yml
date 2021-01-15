@@ -1,0 +1,14 @@
+service: sls-google-func-rest-api
+
+plugins:
+  - serverless-google-cloudfunctions
+  - serverless-plugin-typescript
+
+provider:
+  name: google
+
+functions:
+  first:
+    handler: handler.index
+    events:
+      - http: path
