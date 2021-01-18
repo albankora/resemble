@@ -1,6 +1,6 @@
 module.exports = {
     "roots": [
-        "<rootDir>/src",
+        "<rootDir>/server",
         "<rootDir>/tests"
     ],
     "testMatch": [

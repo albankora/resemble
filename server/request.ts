@@ -1,16 +1,14 @@
-import { Request as ExpressRequest } from 'express'
-
 export default class Request {
   private readonly _body
   private readonly _headers
   private readonly _uri
   private readonly _method
 
-  constructor(body: any, method: any, headers: any, uri: any) {
+  constructor(uri: any = null, body: any = null, method: any = null, headers: any = null) {
+    this._uri = uri
     this._body = body
     this._method = method
     this._headers = headers
-    this._uri = uri
   }
 
   body(): any {
@@ -26,7 +24,11 @@ export default class Request {
   }
 
   service(): string {
-    return this._uri.split('/')[0]
+    if (typeof this._uri !== "string") {
+      throw new Error("Invalid type for Request URI!!!")
+    }
+
+    return this._uri.replace(/^\//g, '').split('/')[0]
   }
 
   check(artifact: string) {

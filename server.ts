@@ -1,8 +1,8 @@
 import express, {json, urlencoded} from 'express'
-import Request from './src/request'
-import Response from './src/response'
-import ResembleFinder from "./src/resemblefinder";
-import ResembleLoader from "./src/resembleloader";
+import Request from './server/request'
+import Response from './server/response'
+import Finder from "./server/finder";
+import Loader from "./server/loader";
 
 const server: express.Application = express()
 
@@ -11,11 +11,10 @@ server.use(urlencoded())
 
 server.all('*', function (req, res) {
   try {
-    const request = new Request(req.body, req.method, req.headers, req.originalUrl)
-    const resembleLoader = new ResembleLoader(request, new Response(res))
-    const resembleFinder = new ResembleFinder(request)
-    const resemble = resembleFinder.findTheRightResemble(resembleLoader.allServiceResembles())
-    resemble.run()
+    const request = new Request(req.originalUrl, req.body, req.method, req.headers)
+    const setups = (new Loader(request, new Response(res))).loadServiceResembleCollection()
+    const setup = (new Finder(request)).findTheRightResembleFrom(setups)
+    setup.resemble()
   } catch (e) {
     res.status(500).json({
       status: {

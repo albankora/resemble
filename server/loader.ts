@@ -1,9 +1,9 @@
-import Resemble from "./resemble";
 import fs from "fs";
+import Setup from "./setup";
 import Request from "./request";
 import Response from "./response";
 
-export default class ResembleLoader {
+export default class Loader {
   private readonly request
   private readonly response
 
@@ -12,9 +12,10 @@ export default class ResembleLoader {
     this.response = response
   }
 
-  allServiceResembles(): Array<Resemble> {
-    let resembles: Array<Resemble> = []
-    const path = '../resemblances/' + this.request.service() + "/"
+  loadServiceResembleCollection(): Array<Setup> {
+    let resembles: Array<Setup> = []
+    console.log(this.request.service())
+    const path = '../../setup/' + this.request.service() + "/"
     if (!fs.existsSync(path)) {
       throw new Error("Resemble service not found!!!")
     }
@@ -22,7 +23,7 @@ export default class ResembleLoader {
     let files = fs.readdirSync(path);
 
     for (let i in files) {
-      let resemble = new Resemble(JSON.parse(files[i]), this.request, this.response)
+      let resemble = new Setup(JSON.parse(files[i]), this.request, this.response)
       if (resemble.hasSameMethodAsRequest()) {
         resembles.push(resemble)
       }

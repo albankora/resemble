@@ -1,7 +1,7 @@
 import Request from './request'
 import Response from './response'
 
-export default class Resemble {
+export default class Setup {
 
   private readonly _data: any;
   private _request: any;
@@ -13,11 +13,11 @@ export default class Resemble {
     this._response = response
   }
 
-  run(): any {
+  resemble(): any {
     return ''
   }
 
-  hasSameMethodAsRequest(): boolean{
+  hasSameMethodAsRequest(): boolean {
     return this._data.method === this._request.method()
   }
 

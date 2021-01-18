@@ -1,12 +1,12 @@
 {
   "method": "GET",
   "route": "/people/:id",
-  "resembles": {
-    "validate": {
+  "resembling": {
+    "validation": {
     },
     "delayed": {
     },
-    "response": {
+    "respond": {
     }
   }
 }

@@ -1,14 +1,14 @@
-import Resemble from "./resemble"
+import Setup from "./setup"
 import Request from './request'
 
-export default class ResembleFinder {
+export default class Finder {
   private request: Request
 
   constructor(request: Request) {
     this.request = request
   }
 
-  findTheRightResemble(resembles: Array<Resemble>): Resemble {
+  findTheRightResembleFrom(resembles: Array<Setup>): Setup {
 
     let routes: Array<string> = []
     for (let i in resembles) {

@@ -10,17 +10,18 @@
     "test:watch": "jest --watchAll",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "build": "tsc -p .",
-    "docker:build": "docker build -t resemble .",
-    "docker:run": "docker run --rm -v $(pwd):/app --env-file .env -p 3000:3000 --name resemble -it resemble",
-    "docker:shell": "docker exec -it resemble /bin/sh",
+    "build": "rm -rf ./dist && tsc -p .",
+    "docker:build": "docker build -t setup .",
+    "docker:run": "docker run --rm -v $(pwd):/app --env-file .env -p 3000:3000 --name setup -it setup",
+    "docker:shell": "docker exec -it setup /bin/sh",
     "deploy:aws": "sls deploy --config deploy/aws-sls.yml",
     "deploy:gcp": "sls deploy --config deploy/gcp-sls.yml",
     "deploy:az": "sls deploy --config deploy/az-sls.yml"
   },
   "dependencies": {
-    "@types/express": "^4.17.9",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "@types/express": "^4.17.9",
     "validatorjs": "^3.22.1",
     "serverless-http": "^2.6.0"
   },

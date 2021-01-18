@@ -1,5 +1,5 @@
 import { Response as ExpressResponse } from 'express'
-import Resemble from "./resemble";
+import Setup from "./setup";
 
 export default class Response {
   private readonly _response
@@ -8,7 +8,7 @@ export default class Response {
     this._response = response
   }
 
-  respond(resemble: Resemble): void {
+  respond(resemble: Setup): void {
     this._response.send('hello world')
   }
 }
